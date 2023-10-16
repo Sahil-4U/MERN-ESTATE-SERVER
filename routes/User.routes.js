@@ -1,9 +1,7 @@
 import express from "express";
-
+import { UserController } from '../controller/UserController.js';
 const UserRouter = express.Router();
 
-UserRouter.get('/test', (req, res) => {
-    res.send('Hi Node js, I am willing to work with you');
-})
+UserRouter.get('/test', UserController);
 
 export default UserRouter;
