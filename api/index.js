@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from 'mongoose';
-import UserRouter from "../routes/User.routes.js";
+import userRouter from "../routes/User.routes.js";
+import authRouter from '../routes/Auth.routes.js';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -16,7 +17,7 @@ dotenv.config();
 const app = express();
 
 // middle ware
-// app.use(express.json());
+app.use(express.json());
 
 app.listen(6400, () => {
     console.log('server is listning');
@@ -25,5 +26,6 @@ app.get('/', (req, res) => {
     res.send('<center><h1>Welcome</h1></center>');
 })
 
-app.use('/api/user', UserRouter);
+app.use('/api/user', userRouter);
+app.use('/api/auth', authRouter);
 
