@@ -9,9 +9,9 @@ dotenv.config();
 
 
 // mongodb connection
-// mongoose.connect(process.env.mongouri)
-//     .then(() => console.log('mongodb connected successfully'))
-//     .catch((error) => console.log(error))
+mongoose.connect(process.env.mongouri)
+    .then(() => console.log('mongodb connected successfully'))
+    .catch((error) => console.log(error))
 
 
 const app = express();
