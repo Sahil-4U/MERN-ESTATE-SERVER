@@ -11,4 +11,5 @@ export const singup = async (req, res, next) => {
     } catch (error) {
         next(error);
     }
+    // console.log(username, email, password);
 };

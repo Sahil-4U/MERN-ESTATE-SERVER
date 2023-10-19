@@ -3,6 +3,6 @@ import { singup } from '../controller/AuthController.js';
 
 const authRouter = express.Router();
 
-authRouter.post("/singup", singup);
+authRouter.post("/sing-up", singup);
 
 export default authRouter;
