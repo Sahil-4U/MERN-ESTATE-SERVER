@@ -16,18 +16,18 @@ export const singup = async (req, res, next) => {
 };
 export const signin = async (req, res, next) => {
     try {
-       const { email, password } = req.body;
-       const Validater = await User.findOne({ email });
-       if (!Validater) return next(errorHandler(404, 'User not found please Sing Up first'));
-       const comPassword = bcryptjs.compareSync(password, Validater.password);
-       if (!comPassword) return next(errorHandler(404, 'Wrong Credentials'));
+        const { email, password } = req.body;
+        const Validater = await User.findOne({ email });
+        if (!Validater) return next(errorHandler(404, 'User not found please Sing Up first'));
+        const comPassword = bcryptjs.compareSync(password, Validater.password);
+        if (!comPassword) return next(errorHandler(404, 'Wrong Credentials'));
 
-       const token = jwt.sign({ id: Validater._id }, process.env.JWT_SECRET);
+        const token = jwt.sign({ id: Validater._id }, process.env.JWT_SECRET);
 
-       const { password: pass, ...rest } = Validater._doc;
+        const { password: pass, ...rest } = Validater._doc;
 
-       res.cookie('access token', token, { httpOnly: true }).status(200).json(rest);
-   } catch (error) {
-       next(error);
-   }
-}
+        res.cookie('access token', token, { httpOnly: true }).status(200).json(rest);
+    } catch (error) {
+        next(error);
+    }
+};
