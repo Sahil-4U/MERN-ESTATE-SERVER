@@ -25,8 +25,12 @@ export const signin = async (req, res, next) => {
         const token = jwt.sign({ id: Validater._id }, process.env.JWT_SECRET);
 
         const { password: pass, ...rest } = Validater._doc;
+        console.log(token, rest, "line 28 at authcontoller.js");
 
-        res.cookie('access token', token, { httpOnly: true }).status(200).json(rest);
+        res
+            .cookie('data_token', token, { httpOnly: true })
+            .status(200)
+            .json(rest);
     } catch (error) {
         next(error);
     }
