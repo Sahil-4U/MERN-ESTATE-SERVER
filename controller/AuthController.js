@@ -9,7 +9,7 @@ export const singup = async (req, res, next) => {
     const userDB = new User({ username, email, password: hashedPassword });
     try {
         await userDB.save();
-        res.status(201).json("User created successfully!!!");
+        return res.status(201).json("User created successfully!!!");
     } catch (error) {
         next(error);
     }
@@ -28,7 +28,7 @@ export const signin = async (req, res, next) => {
         console.log(token, rest, "line 28 at authcontoller.js");
 
         res
-            .cookie('data_token', token, { httpOnly: true })
+            .cookie(`access_token`, token, { httpOnly: true })
             .status(200)
             .json(rest);
     } catch (error) {
