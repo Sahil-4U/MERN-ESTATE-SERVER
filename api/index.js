@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import userRouter from "../routes/User.routes.js";
 import authRouter from '../routes/Auth.routes.js';
+import cookieParser from 'cookie-parser';
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -22,6 +23,9 @@ app.use(express.json());
 
 // cors package
 app.use(cors());
+
+// cookie parser package for read cookies
+app.use(cookieParser());
 
 app.listen(6400, () => {
     console.log('server is listning');
