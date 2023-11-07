@@ -7,7 +7,7 @@ export const UserController = (req, res) => {
 }
 
 export const updateUser = async (req, res, next) => {
-
+    console.log(req.user);
     if (req.user.id !== req.params.id) return next(errorHandler(403, 'You can update your account only'));
     try {
         if (req.body.password) {
