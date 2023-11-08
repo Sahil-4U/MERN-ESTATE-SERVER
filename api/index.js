@@ -21,8 +21,14 @@ const app = express();
 // middle ware
 app.use(express.json());
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    credentials: true,
+};
+
+
 // cors package
-app.use(cors());
+app.use(cors(corsOptions));
 
 // cookie parser package for read cookies
 app.use(cookieParser());

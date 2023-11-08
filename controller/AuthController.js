@@ -24,15 +24,12 @@ export const signin = async (req, res, next) => {
 
         const token = jwt.sign({ id: Validater._id }, process.env.JWT_SECRET);
 
+        console.log('token', token);
+
         const { password: pass, ...rest } = Validater._doc;
 
 
-        return res.cookie(`access_token`, token, {
-            expires: new Date(Date.now() + 30000),
-            httpOnly: true
-        })
-            .status(200)
-            .json(rest);
+        res.cookie("jwtToken", token, { httpOnly: false }).status(201).json(rest);
     } catch (error) {
         next(error);
     }
