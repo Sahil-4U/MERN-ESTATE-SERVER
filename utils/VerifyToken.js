@@ -2,8 +2,8 @@ import { errorHandler } from "./Error.js";
 import jwt from "jsonwebtoken";
 
 export const Verifytoken = (req, res, next) => {
-    console.log(req.cookies);
-    const token = req.cookies.access_token;
+    console.log(req.cookies.jwtToken);
+    const token = req.cookies.jwtToken;
 
     if (!token) return next(errorHandler(403, 'User not authorized forbidden'));
 
